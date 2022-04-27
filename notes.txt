@@ -1,0 +1,39 @@
+<ModelName>.objects.<query>()
+
+<query>:
+
+1. all() - selects all entries in that model's DB
+
+<ModelName>.objects.all()[a:b]
+
+2. count() - gives no. of elems in the DB
+
+
+
+3. filter() - select based on an entry
+
+<ModelName>.objects.filter(name__icontains='j') # any value that contains j
+<ModelName>.objects.filter(email__startswith='j') # any value that starts with j
+<ModelName>.objects.filter(email__endswith='j') # any value that ends with j
+<ModelName>.objects.filter(age__gte=10) # any entries that has value greater than 10
+<ModelName>.objects.filter(age__lte=10) # any entries that has value less than 10
+
+<ModelName>.objects.filter(age__gte=10).count() # Count the value
+
+<ModelName>.objects.filter(<foreign_key_variable>__<var_in_foreign_model>=<VALUE>) # access value of a Foreign Key
+# EG: <ModelName>.objects.filter(people__name__icontains = "Jon") # value in foreign model which contains "Jon"
+
+<ModelName>.objects.filter(people__email__icontains="email.com", people__age__gte=18) # We can pass 2 variables as well.
+
+obj, _ = <ModelName>.objects.get_or_create(age=10) #   _ returns false if Only GET 
+                                                   # & _ returns true if Created a Record
+                                                   # obj holds the object Created
+
+
+-------------------------------------------------------------------------------------
+'''
+from django.db import connection, reset_queries
+
+-> connection.queries
+-> reset_queries()
+'''
