@@ -37,3 +37,17 @@ from django.db import connection, reset_queries
 -> connection.queries
 -> reset_queries()
 '''
+
+CREATE:
+Employee.objects.create(name="Nishant", email="nish2002.sharma@gmail.com") # ONLY CREATE
+
+UPDATE:
+e = Employee(name="Nishant", email="nish2002.sharma@gmail.com") # CREATE AND UPDATE
+e.save()
+
+READ:
+filter(), all(), get()
+
+DELETE:
+e = Employee.objects.get(pk=1)
+e.delete()

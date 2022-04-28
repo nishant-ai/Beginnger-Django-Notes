@@ -1,0 +1,32 @@
+User Registration:
+    - Create Url Route and Views Function.
+    - Create a Form.
+    - fetch data sent by POST form.
+    - Now use below codes to create a User -> using the default USER model.
+
+'''
+
+from django.contrib.auth.models import User, auth
+
+def register(request):
+    if request.method == 'POST':
+        # fetch data
+        """
+        """
+        """
+    
+        if password1 == password2:
+            # check if username already exists
+            if User.objects.filter(username=username).exists():
+                print("Username taken")
+
+            #check if email already exists
+            if User.objects.filter(email=email).exists():
+                print("Email taken)
+
+            # create user without superuser priveleges
+            user  = User.objects.create_user(username=username, password=password1, email=email)
+            user.save()
+            return redirect('/')
+
+'''
